@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
 import "./styles.css";
@@ -51,6 +51,19 @@ const limpar = () => {
 };
 
 function App() {
+  const [estado, setEstado] = useState("START");
+
+  const contando = () => {
+    setEstado("contando");
+  };
+
+  const voltar = () => {
+    setEstado("START");
+  };
+
+  if (estado === "START") {
+    return <button onClick={contando}>Vamos contar ?</button>;
+  }
   return (
     <div className="App">
       {titulo}
@@ -69,6 +82,7 @@ function App() {
       <p>
         <button onClick={contar}>Contar</button>
         <button onClick={limpar}>Limpar</button>
+        <button onClick={voltar}>Voltar</button>
       </p>
       {rest}
     </div>
